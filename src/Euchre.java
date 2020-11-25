@@ -278,6 +278,38 @@ public class Euchre
     }
 
     /**
+     * a method to take a yes-or-no input on a question from the user
+     *
+     * @param prompt the string of text to show the user describing the desired input
+     * @return a boolean corresponding to the user's yes/no response
+     */
+    public static boolean getYesOrNo(String prompt)
+    {
+        Scanner input = new Scanner(System.in);
+        boolean goodInput = false;
+        String returnValue;
+
+        do
+        {
+            System.out.print(prompt + " (y/n):");
+            returnValue = input.nextLine();
+
+            if(returnValue.indexOf('y') != -1 || returnValue.indexOf('n') != 0)
+            {
+                goodInput = true;
+            }
+
+            else
+            {
+                System.out.println("The input you have provided does not match the query.");
+            }
+        }
+        while(!goodInput);
+
+        return returnValue.indexOf('y') != -1;
+    }
+
+    /**
      * a method to write lines of text to a log file for later analysis and debugging
      *
      * @param text the text to be written to a log file
