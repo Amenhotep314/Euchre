@@ -28,8 +28,34 @@ public class Main
      * an integer representing the player who is the dealer, from 1 to 4
      */
     public static int dealer;
+    /**
+     * an integer which represents the current player, from 1 to 4, assigned to the player after the dealer at the beginning of each round
+     */
+    public static int player;
+    /**
+     * The first-third player team's overall score, which must reach 9 in order for them to win
+     */
     public static int oneThreeScore = 0;
+    /**
+     * The second-fourth player team's overall score, which must reach 9 in order for them to win
+     */
     public static int twoFourScore = 0;
+    /**
+     * The first-third player team's score for the round, which is reset every 5 tricks
+     */
+    public static int oneThreeRoundScore = 0;
+    /**
+     * The second-fourth player team's score for the round, which is reset every 5 tricks
+     */
+    public static int twoFourRoundScore = 0;
+    /**
+     * The first-third player team's score for the trick, the sum of the powers of their cards thrown
+     */
+    public static int oneThreeTrickScore = 0;
+    /**
+     * The second-fourth player team's score for the trick, the sum of the powers of their cards thrown
+     */
+    public static int twoFourTrickScore = 0;
 
     /**
      * the main method
@@ -106,16 +132,16 @@ public class Main
     public static void game()
     {
         dealer = getPlayer("Which player will deal first?");
-        log("Player " + dealer + " deals");
 
         while(oneThreeScore < 9 && twoFourScore < 9)
         {
+            log("Player " + dealer + " deals");
+
             for(int i = 0; i < hand.length; i += 1)
             {
                 hand[i] = getCard("What is the " + (i + 1) + " card in your hand?");
                 log(hand[i].getName() + " is in hand");
             }
-
 
         }
     }

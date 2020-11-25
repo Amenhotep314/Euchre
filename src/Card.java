@@ -1,4 +1,3 @@
-
 /**
  * <h1>Card</h1>
  * This class contains all attributes and values associated with each card in the deck
@@ -18,13 +17,13 @@ public class Card
      */
     private final int card;
     /**
-     * an integer representing the card's power, from 0 to 17
-     */
-    private int power;
-    /**
      * a String which stores the name of the card
      */
     private final String name;
+    /**
+     * an integer representing the card's power, from 0 to 17
+     */
+    private int power;
     /**
      * a boolean which is true if this card has been thrown this trick
      */
