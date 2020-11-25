@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @version 1.0
  * @since 2020-04-14
  */
-public class Main
+public class Euchre
 {
     /**
      * a two-dimensional array to hold instances of the Card class
@@ -180,6 +180,7 @@ public class Main
 
     /**
      * a method to take user input specifying a card in the Euchre deck
+     *
      * @param prompt the string of text to show the user describing the desired input
      * @return a Card object from the array Deck
      */
