@@ -229,6 +229,55 @@ public class Euchre
     }
 
     /**
+     * a method to take user input specifying a suite of cards in the Euchre deck
+     *
+     * @param prompt the string of text to show the user describing the desired input
+     * @return an array of Card objects, all belonging to one suite, from the two-dimensional deck array
+     */
+    public static Card[] getSuite(String prompt)
+    {
+        Scanner input = new Scanner(System.in);
+        boolean goodInput = false;
+        String returnValue;
+
+        do
+        {
+            System.out.println(prompt + " (Enter a suite in the one-character format):");
+            returnValue = input.nextLine();
+
+            if((returnValue.length() == 1) && (returnValue.equals("c") || returnValue.equals("d") || returnValue.equals("h") || returnValue.equals("s")))
+            {
+                goodInput = true;
+            }
+
+            else
+            {
+                System.out.println("The input you have provided does not match the query.");
+            }
+        }
+        while(!goodInput);
+
+        switch(returnValue)
+        {
+            case "c" -> {
+                return deck[0];
+            }
+
+            case "d" -> {
+                return deck[1];
+            }
+
+            case "h" -> {
+                return deck[2];
+            }
+
+            default -> {
+                return deck[3];
+            }
+        }
+    }
+
+    /**
      * a method to write lines of text to a log file for later analysis and debugging
      *
      * @param text the text to be written to a log file
