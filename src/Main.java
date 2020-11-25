@@ -136,13 +136,13 @@ public class Main
         while(oneThreeScore < 9 && twoFourScore < 9)
         {
             log("Player " + dealer + " deals");
+            player = dealer + 1;
 
             for(int i = 0; i < hand.length; i += 1)
             {
                 hand[i] = getCard("What is the " + (i + 1) + " card in your hand?");
                 log(hand[i].getName() + " is in hand");
             }
-
         }
     }
 
@@ -188,7 +188,7 @@ public class Main
         Scanner input = new Scanner(System.in);
         boolean goodInput = false;
         String returnValue;
-        int returnSuit = 0;
+        int returnSuite = 0;
         int returnCard = 0;
 
         do
@@ -208,47 +208,23 @@ public class Main
         }
         while(!goodInput);
 
-        if(returnValue.charAt(1) == 'd')
+        switch(returnValue.charAt(1))
         {
-            returnSuit = 1;
+            case 'd' -> returnSuite = 1;
+            case 'h' -> returnSuite = 2;
+            case 's' -> returnSuite = 3;
         }
 
-        if(returnValue.charAt(1) == 'h')
+        switch(returnValue.charAt(0))
         {
-            returnSuit = 2;
+            case 't' -> returnCard = 1;
+            case 'j' -> returnCard = 2;
+            case 'q' -> returnCard = 3;
+            case 'k' -> returnCard = 4;
+            case 'a' -> returnCard = 5;
         }
 
-        if(returnValue.charAt(1) == 's')
-        {
-            returnSuit = 3;
-        }
-
-        if(returnValue.charAt(0) == 't')
-        {
-            returnCard = 1;
-        }
-
-        if(returnValue.charAt(0) == 'j')
-        {
-            returnCard = 2;
-        }
-
-        if(returnValue.charAt(0) == 'q')
-        {
-            returnCard = 3;
-        }
-
-        if(returnValue.charAt(0) == 'k')
-        {
-            returnCard = 4;
-        }
-
-        if(returnValue.charAt(0) == 'a')
-        {
-            returnCard = 5;
-        }
-
-        return deck[returnSuit][returnCard];
+        return deck[returnSuite][returnCard];
     }
 
     /**
