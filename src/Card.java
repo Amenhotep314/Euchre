@@ -12,16 +12,11 @@ public class Card
     /**
      * an integer representing the card's suite, from 0 to 3
      */
-    private int suite;
+    private final int suite;
     /**
      * an integer representing which particular card this is, from 0 to 5
      */
-    private int card;
-    /**
-     * an integer representing the card's fixed power, barring the rules of the game. This value
-     * doesn't change
-     */
-    private final int ogPower;
+    private final int card;
     /**
      * an integer representing the card's power, from 0 to 17
      */
@@ -30,6 +25,9 @@ public class Card
      * a String which stores the name of the card
      */
     private final String name;
+    /**
+     * a boolean which is true if this card has been thrown this trick
+     */
     private boolean inPlay;
 
     /**
@@ -45,57 +43,24 @@ public class Card
         cardStr = this.name.substring(0, this.name.indexOf("of") - 1);
         suiteStr = this.name.substring(this.name.indexOf("of") + 3);
 
-        if(cardStr.equals("nine"))
+        switch(cardStr)
         {
-            card = 0;
+            case "nine" -> card = 0;
+            case "ten" -> card = 1;
+            case "jack" -> card = 2;
+            case "queen" -> card = 3;
+            case "king" -> card = 4;
+            default -> card = 5;
         }
 
-        if(cardStr.equals("ten"))
-        {
-            card = 1;
-        }
+        power = card;
 
-        if(cardStr.equals("jack"))
+        switch(suiteStr)
         {
-            card = 2;
-        }
-
-        if(cardStr.equals("queen"))
-        {
-            card = 3;
-        }
-
-        if(cardStr.equals("king"))
-        {
-            card = 4;
-        }
-
-        if(cardStr.equals("ace"))
-        {
-            card = 5;
-        }
-
-        ogPower = card;
-        power = ogPower;
-
-        if(suiteStr.equals("clubs"))
-        {
-            suite = 0;
-        }
-
-        if(suiteStr.equals("diamonds"))
-        {
-            suite = 1;
-        }
-
-        if(suiteStr.equals("hearts"))
-        {
-            suite = 2;
-        }
-
-        if(suiteStr.equals("spades"))
-        {
-            suite = 3;
+            case "clubs" -> suite = 0;
+            case "diamonds" -> suite = 1;
+            case "hearts" -> suite = 2;
+            default -> suite = 3;
         }
     }
 
@@ -104,7 +69,7 @@ public class Card
      */
     public void resetPower()
     {
-        power = ogPower;
+        power = card;
     }
 
     /**
